@@ -1,4 +1,4 @@
-# git-alias-boilerplate
+# git-aliases-boilerplate
 A repo that contains git shortcuts for fast paced remote collaborative work.
 
 ## To Setup
