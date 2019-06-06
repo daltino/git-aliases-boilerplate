@@ -1,10 +1,11 @@
-ao = git --amend --no-edit
+an = commit --amend --no-edit
 br = branch
 dt = difftool
 mt = mergetool
 co = checkout
 cob = checkout -b
 ci = commit
+cm = commit -m
 st = status
 hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --decorate --date=short
 lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
