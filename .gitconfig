@@ -1,3 +1,4 @@
+ao = git --amend --no-edit
 br = branch
 dt = difftool
 mt = mergetool
