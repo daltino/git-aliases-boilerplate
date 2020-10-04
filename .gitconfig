@@ -30,6 +30,12 @@ branch-name = !git rev-parse --abbrev-ref HEAD
 # the upstream branch
 publish = !git push -u origin $(git branch-name)
 
+# Push to remote with force when no changes have occured
+publishf = !git push -u origin --force-with-lease $(git branch-name)
+
+# Pull with rebase on a given branch
+remerge = !git pull --rebase origin
+
 # Delete the remote version of the current branch
 unpublish = !git push origin :$(git branch-name)
 
