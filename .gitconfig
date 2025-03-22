@@ -45,3 +45,70 @@ upstream = rev-parse --abbrev-ref --symbolic-full-name @{upstream}
 
 # Rename [branch] to done-[branch]
 done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+
+# Stash only staged changes
+sp = stash push --staged
+spm = stash push --staged -m
+
+# Stash only unstaged changes
+su = stash push --keep-index
+sum = stash push --keep-index -m
+
+# Reapply a specific stash
+# Usage: git stash apply-index 0
+sasi = "!f() { git stash apply --index stash@{$1}; }; f"
+
+# Reapply only the staged changes in the last stash
+sai = stash apply --index
+
+# Reapply only the staged changes in the last stash and drop it
+sap = stash apply --index && stash drop
+
+# Drop the last stash
+sd = stash drop
+
+# Show the last stash
+ss = stash show
+
+# Show the last stash in full
+ssf = stash show -p
+
+# Show all stashes
+sa = stash list
+
+# Show all stashes in full
+saf = stash list -p
+
+# Show the last stash in full and drop it
+ssfd = stash show -p && stash drop
+
+# Show all stashes in full and drop them
+safd = stash list -p && stash clear
+
+# Show the last stash in full and apply it
+ssfa = stash show -p && stash apply
+
+# Show all stashes in full and apply them
+safa = stash list -p && stash apply
+
+# Show the last stash in full and apply it, then drop it
+ssfad = stash show -p && stash apply && stash drop
+
+# Show all stashes in full and apply them, then drop them
+safad = stash list -p && stash apply && stash clear
+
+# Drop a specific stash using its index
+# Usage: git stash drop-index 0
+sdi = "!f() { git stash drop stash@{$1}; }; f"
+
+# Open git config in the default editor
+config-edit = config --global -e
+
+# List all aliases
+aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+# List all aliases with their commands
+alias-commands = !git config --get-regexp 'alias.*' | colrm 1 6
+
+# List all aliases with their commands and descriptions
+alias-descriptions = !git config --get-regexp 'alias.*' | colrm 1 6 | xargs -I{} sh -c 'echo {}; git config alias."{}"'
